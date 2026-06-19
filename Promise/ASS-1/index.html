@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Assignment-1</title>
+</head>
+<body>
+    <script>
+        let count = 10;
+
+        let myPromise = new Promise(function(resolve, reject){
+
+            if(count > 0){
+                resolve("Positive count");
+            }
+            else{
+                reject("Negative count");
+            }
+
+        });
+
+        myPromise
+        .then(function(result){
+            console.log(result);
+            alert(result);
+        })
+        .catch(function(error){
+            console.log(error);
+            alert(error);
+        });
+
+    </script>
+</body>
+</html>

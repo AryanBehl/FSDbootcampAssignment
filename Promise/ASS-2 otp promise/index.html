@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Promise Ass-2</title>
+</head>
+<body>
+    <input type="text" id="otp" placeholder="Enter OTP">
+    <button onclick="checkOTP()">Submit</button>
+
+    <script>
+
+        function checkOTP(){
+
+            let enteredOTP = document.getElementById("otp").value;
+
+            let otpPromise = new Promise(function(resolve, reject){
+
+                if(enteredOTP === "1234"){
+                    resolve("OTP Verified Successfully");
+                }
+                else{
+                    reject("Invalid OTP");
+                }
+
+            });
+
+            otpPromise
+            .then(function(result){
+                alert(result);
+            })
+            .catch(function(error){
+                alert(error);
+            });
+
+        }
+
+    </script>
+</body>
+</html>
