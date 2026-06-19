@@ -7,12 +7,16 @@
 </head>
 <body>
 
-    <h1>BMI Calculator</h1>
+    <h1>Check your BMI</h1>
 
-    <input type="number" id="weight" placeholder="Enter Weight (KG)">
-    <br><br>
+    <p>Enter your weight and height below to check your BMI results</p>
 
-    <input type="number" id="height" placeholder="Enter Height (Meter)" step="0.01">
+    <h3>Put your weight in here (KG)</h3>
+    <input type="number" id="weight">
+
+    <h3>And your height in here (CM)</h3>
+    <input type="number" id="height">
+
     <br><br>
 
     <button onclick="bmiCalc()">Calculate BMI</button>
@@ -24,30 +28,29 @@
         function bmiCalc() {
 
             const weight = Number(document.getElementById("weight").value);
-            const height = Number(document.getElementById("height").value);
+            const heightCm = Number(document.getElementById("height").value);
 
-            const bmi = weight / (height * height);
+            const heightM = heightCm / 100;
+
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+            let status = "";
 
             if (bmi <= 18.4) {
-                document.getElementById("result").innerText =
-                    "BMI = " + bmi.toFixed(2) + " (Underweight)";
+                status = "Underweight";
             }
-
             else if (bmi >= 18.5 && bmi <= 24.9) {
-                document.getElementById("result").innerText =
-                    "BMI = " + bmi.toFixed(2) + " (Normal Weight)";
+                status = "Normal Weight";
             }
-
             else if (bmi >= 25 && bmi <= 29.9) {
-                document.getElementById("result").innerText =
-                    "BMI = " + bmi.toFixed(2) + " (Overweight)";
+                status = "Overweight";
             }
-
             else {
-                document.getElementById("result").innerText =
-                    "BMI = " + bmi.toFixed(2) + " (Obese)";
+                status = "Obese";
             }
 
+            document.getElementById("result").innerText =
+                `Your BMI is ${bmi} which means You are ${status}`;
         }
 
     </script>
